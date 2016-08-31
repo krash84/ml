@@ -91,7 +91,10 @@ for i=1:m
         J = J + (-yi(k) * log(H(i,k)) - (1-yi(k)) * log(1-H(i,k)));
     end
 end
-J = J*(1/m);
+Th1 = Theta1(:, 2:end);
+Th2 = Theta2(:, 2:end);
+kv = (0.5*lambda/m)*(sum(sum(Th1.^2)) + sum(sum(Th2.^2)));
+J = J*(1/m) + kv;
 
 % -------------------------------------------------------------
 
@@ -118,6 +121,8 @@ Theta2_grad = D2;
 Theta1_grad = D1;
 
 % =========================================================================
+
+
 
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
