@@ -121,8 +121,8 @@ Theta2_grad = D2;
 Theta1_grad = D1;
 
 % =========================================================================
-
-
+Theta1_grad(:, 2:end) = Theta1_grad(:, 2:end) + (lambda/m)*Th1;
+Theta2_grad(:, 2:end) = Theta2_grad(:, 2:end) + (lambda/m)*Th2;
 
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
